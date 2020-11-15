@@ -1,24 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import Routers from "./component/Routers/Routers";
+import {BrowserRouter as Router} from "react-router-dom";
+import StateProvider from "./contextApi/contextProvider";
+import { initialState, reducer } from "./contextApi/Reducers/reducer";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StateProvider initialState={initialState} reducer={reducer}>
+      <Router>
+        <div className="App">
+            <Routers/>
+        </div>
+      </Router>
+    </StateProvider>
   );
 }
 
